@@ -1,0 +1,48 @@
+body {
+    margin-left: 55px;
+}
+
+mat-input {
+    background-color: antiquewhite;
+    padding-left: 10px;;
+}
+
+.full-width-field {
+    width: 80%;
+}
+
+.input-field {
+   color: rgb(24, 27, 226);
+   font-size: 1.1em;
+   padding-top: .5rem;
+}
+
+input {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 0px;
+    line-height: 0.5rem;
+}
+
+.input-field mat-label {
+    color: rgb(24, 27, 226);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+    border-color: black;
+    /* background-color: rgb(202, 198, 186); */
+    /* add label text color here */
+
+  }
+
+  .input-field mat-hint {
+    color: rgb(24, 27, 226);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+    border-color: black;
+  }
+
+  .errormsg {
+    color: crimson;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    padding-top: 10px;
+}

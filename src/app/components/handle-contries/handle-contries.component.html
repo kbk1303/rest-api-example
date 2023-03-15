@@ -1,0 +1,79 @@
+<div style="width: 30%; padding-left: 10px; padding-bottom: 20px; border-radius: 10px; border-style: dotted;">
+    <h4>Create Angular JSON object using Http POST</h4>
+    <form [formGroup] ="newCountryFromGrp" (ngSubmit)="onSubmit();">
+        <!-- Country name-->
+        <div style="width: 100%">
+            <mat-form-field class="full-width-field input-field" appearance="fill">
+                <mat-label>Enter the country name</mat-label>
+                    <input matInput placeholder="Danmark" type="text" class="form-control" id="inputName" 
+                    formControlName="name" [class.is-invalid] = "newCountryFromGrp.get('name')!.invalid && newCountryFromGrp.get('name')!.touched" required>
+                    <mat-error *ngIf="newCountryFromGrp.invalid">{{getErrorMessageName()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <!-- Country flag-->
+        <div style="width: 100%">
+            <mat-form-field class="full-width-field input-field" appearance="fill">
+                <mat-label>Enter the flag's wikipedia location</mat-label>
+                        <input matInput placeholder="9/9c/Flag_of_Denmark.svg" type="text" class="form-control" id="inputFlag" 
+                        formControlName="flag" [class.is-invalid] = "newCountryFromGrp.get('flag')!.invalid && newCountryFromGrp.get('flag')!.touched" required>
+                        <mat-error *ngIf="newCountryFromGrp.invalid">{{getErrorMessageFlag()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <!-- Country area-->
+        <div style="width: 100%">
+            <mat-form-field class="full-width-field input-field" appearance="fill">
+                <mat-label>Enter the area (Square metres)</mat-label>
+                        <input matInput placeholder="1234.45" type="text" class="form-control" id="inputArea" 
+                        formControlName="area" [class.is-invalid] = "newCountryFromGrp.get('area')!.invalid && newCountryFromGrp.get('area')!.touched" required>
+                        <mat-error *ngIf="newCountryFromGrp.invalid">{{getErrorMessageArea()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <!-- Country population-->
+        <div style="width: 100%">
+            <mat-form-field class="full-width-field input-field" appearance="fill">
+                <mat-label>Enter the polulation</mat-label>
+                        <input matInput placeholder="5800000" type="text" class="form-control" id="inputPopulation" 
+                        formControlName="population" [class.is-invalid] = "newCountryFromGrp.get('population')!.invalid && newCountryFromGrp.get('population')!.touched" required>
+                        <mat-error *ngIf="newCountryFromGrp.invalid">{{getErrorMessagePopulation()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <!-- wikiUrl-->
+        <div style="width: 100%">
+            <mat-form-field class="full-width-field input-field" appearance="fill">
+                <mat-label>Enter the fully qualified Wikipedia Url</mat-label>
+                        <input matInput placeholder="https://en.wikipedia.org/wiki/Denmark" type="text" class="form-control" id="inputWikiUrl" 
+                        formControlName="wikiUrl" [class.is-invalid] = "newCountryFromGrp.get('wikiUrl')!.invalid && newCountryFromGrp.get('wikiUrl')!.touched" required>
+                        <mat-error *ngIf="newCountryFromGrp.invalid">{{getErrorMessageWikiUrl()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <button mat-flat-button type="submit" class="btn-submit" type="submit" [disabled]="!newCountryFromGrp.valid">Enroll Country</button>
+        </div>
+    </form>
+</div>
+
+
+
+<h4>Read Angular JSON using Http GET</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Country</th>
+        <th scope="col">Area</th>
+        <th scope="col">Population</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let country of countries$ | async as countries index as i">
+        <td scope="row">{{ i + 1 }}</td>
+        <td>
+          <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
+          {{ country.name }}
+        </td>
+        <td>{{ country.area | number }}</td>
+        <td>{{ country.population | number }}</td>
+      </tr>
+    </tbody>
+  </table>
+
